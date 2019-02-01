@@ -17,7 +17,6 @@ public class Main extends Application {
 
     final DecimalFormat df = new DecimalFormat("#.###");
 
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -25,6 +24,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         final Stage window = primaryStage;
+        window.getIcons().add(new Image("https://cdn2.iconfinder.com/data/icons/picons-basic-3/57/basic3-105_calculator-512.png"));
         window.setTitle("Euler's Method Calculator");
         window.setResizable(false);
         final GridPane calculationPane = new GridPane();
@@ -69,20 +69,18 @@ public class Main extends Application {
         solutionY.setEditable(false);
         vb2.getChildren().add(solutionY);
 
-
         TextArea solutionYP = new TextArea();
         solutionYP.setPrefWidth(100);
         solutionYP.setPrefHeight(300);
         solutionYP.setEditable(false);
         vb3.getChildren().add(solutionYP);
 
-
         hb.getChildren().add(vb1);
         hb.getChildren().add(vb2);
         hb.getChildren().add(vb3);
 
         VBox vb = new VBox();
-        vb.setSpacing(20);
+        vb.setSpacing(12);
 
         TextField inX = new TextField();
         inX.setPrefWidth(100);
@@ -111,6 +109,9 @@ public class Main extends Application {
         Button calculateButton = new Button("Calculate");
         calculateButton.setPrefWidth(100);
 
+        Label credits = new Label("Code: Justin Chang");
+        Label credits2 = new Label("String to Math: Boann");
+
         vb.getChildren().add(inX);
         vb.getChildren().add(inY);
         vb.getChildren().add(dx);
@@ -118,6 +119,8 @@ public class Main extends Application {
         vb.getChildren().add(startX);
         vb.getChildren().add(endX);
         vb.getChildren().add(calculateButton);
+        vb.getChildren().add(credits);
+        vb.getChildren().add(credits2);
         hb.getChildren().add(vb);
 
         calculateButton.setOnAction(actionEvent -> {
@@ -152,6 +155,9 @@ public class Main extends Application {
         return out;
     }
 
+    /*
+     * Credits to @Boann on Stack Overflow.
+     */
     private static double eval(final String str) {
         return new Object() {
             int pos = -1, ch;
