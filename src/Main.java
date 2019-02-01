@@ -98,16 +98,15 @@ public class Main extends Application {
         yPrime.setPrefWidth(100);
         yPrime.setText("dy/dx");
 
-        TextField startX = new TextField();
-        startX.setPrefWidth(100);
-        startX.setText("Starting X");
-
         TextField endX = new TextField();
         endX.setPrefWidth(100);
         endX.setText("Ending X");
 
         Button calculateButton = new Button("Calculate");
         calculateButton.setPrefWidth(100);
+
+        Button clearButton = new Button("Clear");
+        clearButton.setPrefWidth(100);
 
         Label credits = new Label("Code: Justin Chang");
         Label credits2 = new Label("String to Math: Boann");
@@ -116,15 +115,21 @@ public class Main extends Application {
         vb.getChildren().add(inY);
         vb.getChildren().add(dx);
         vb.getChildren().add(yPrime);
-        vb.getChildren().add(startX);
         vb.getChildren().add(endX);
         vb.getChildren().add(calculateButton);
+        vb.getChildren().add(clearButton);
         vb.getChildren().add(credits);
         vb.getChildren().add(credits2);
         hb.getChildren().add(vb);
 
         calculateButton.setOnAction(actionEvent -> {
-            calculate(Double.parseDouble(inX.getText()), Double.parseDouble(inY.getText()), Double.parseDouble(dx.getText()), yPrime.getText(), Double.parseDouble(startX.getText()), Double.parseDouble(endX.getText()), solutionX, solutionY, solutionYP);
+            calculate(Double.parseDouble(inX.getText()), Double.parseDouble(inY.getText()), Double.parseDouble(dx.getText()), yPrime.getText(), Double.parseDouble(endX.getText()), solutionX, solutionY, solutionYP);
+        });
+
+        clearButton.setOnAction(actionEvent -> {
+            solutionX.setText("");
+            solutionY.setText("");
+            solutionYP.setText("");
         });
 
         calculationPane.getChildren().add(hb);
@@ -132,16 +137,16 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public double calculate(double inX, double inY, double dx, String yPrime, double startX, double endX, TextArea X,
+    public double calculate(double inX, double inY, double dx, String yPrime, double endX, TextArea X,
                             TextArea Y, TextArea YP) {
-        if (inX > endX + dx) {
+        if (inX > endX + dx * 0.001) {
             return 0;
         }
         double derivativeV = eval(varToVal(inX, inY, yPrime));
         X.setText(X.getText() + df.format(inX) + "\n");
         Y.setText(Y.getText() + df.format(inY) + "\n");
         YP.setText(YP.getText() + df.format(derivativeV) + "\n");
-        return calculate(inX + dx, inY + 1.0 * derivativeV * dx, dx, yPrime, startX, endX, X, Y, YP);
+        return calculate(inX + dx, inY + 1.0 * derivativeV * dx, dx, yPrime, endX, X, Y, YP);
     }
 
     public String varToVal(double X, double Y, String yPrime) {
