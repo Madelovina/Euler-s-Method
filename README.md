@@ -11,7 +11,7 @@ git clone https://github.com/Madelovina/Euler-s-Method
 ```
 
 ## Usage
-There is already a `.jar` file provided in the output folder. However, you may also compile it yourself. 
+There is already a `.jar` file provided in the output folder. However, you may also compile it yourself. Implementaion for starting x value has not been added. 
 
 ```bash
 javac Main.java
