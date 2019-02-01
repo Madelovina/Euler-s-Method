@@ -132,18 +132,19 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    private double calculate(double inX, double inY, double dx, String yPrime, double startX, double endX, TextArea X, TextArea Y, TextArea YP) {
+    public double calculate(double inX, double inY, double dx, String yPrime, double startX, double endX, TextArea X,
+                            TextArea Y, TextArea YP) {
         if (inX > endX) {
             return 0;
         }
         double derivativeV = eval(varToVal(inX, inY, yPrime));
-        X.setText(X.getText() + "\n" + df.format(inX));
-        Y.setText(Y.getText() + "\n" + df.format(inY));
-        YP.setText(YP.getText() + "\n" + df.format(derivativeV));
+        X.setText(X.getText() + df.format(inX) + "\n");
+        Y.setText(Y.getText() + df.format(inY) + "\n");
+        YP.setText(YP.getText() + df.format(derivativeV) + "\n");
         return calculate(inX + dx, inY + 1.0 * derivativeV * dx, dx, yPrime, startX, endX, X, Y, YP);
     }
 
-    private String varToVal(double X, double Y, String yPrime) {
+    public String varToVal(double X, double Y, String yPrime) {
         String out = "";
         for (int i = 0; i < yPrime.length(); i++)
             if (yPrime.charAt(i) == 'X' || yPrime.charAt(i) == 'x')
@@ -158,7 +159,7 @@ public class Main extends Application {
     /*
      * Credits to @Boann on Stack Overflow.
      */
-    private static double eval(final String str) {
+    public static double eval(final String str) {
         return new Object() {
             int pos = -1, ch;
 
