@@ -134,7 +134,7 @@ public class Main extends Application {
 
     public double calculate(double inX, double inY, double dx, String yPrime, double startX, double endX, TextArea X,
                             TextArea Y, TextArea YP) {
-        if (inX > endX) {
+        if (inX > endX + dx) {
             return 0;
         }
         double derivativeV = eval(varToVal(inX, inY, yPrime));
