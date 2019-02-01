@@ -14,7 +14,7 @@ git clone https://github.com/Madelovina/Euler-s-Method
 
 JAR FILE IS CURRENTLY BUGGED IDK WHY. I HAVE REMOVED IT FROM HERE. RUN THIS PROGRAM FROM SOURCE. 
 
-There is already a `.jar` file provided in the output folder. However, you may also compile it yourself. Implementaion for starting x value has not been added. 
+There is already a `.jar` file provided in the output folder. However, you may also compile it yourself. 
 
 ```bash
 javac Main.java
