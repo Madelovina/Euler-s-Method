@@ -2,6 +2,8 @@
 
 Euler's Method is a program that approximates the next `n` `y` values based off of the information that you have provided. 
 
+![alt text](https://i.imgur.com/xMWlBBs.png)
+
 ## Installation
 
 Just clone it! EZPZ. 
